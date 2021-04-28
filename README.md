@@ -10,7 +10,7 @@ El presente repositorio contiene diversa información, videos y material complem
 - Sin configuración requerida
 - Acceso gratuito a GPU
 - Facilidad para compartir
-- 
+
 La plataforma permite tanto escribir como ejecutar código, y solo se requiere de una cuenta google.
 
 Dentro de este repositorio podrá encontrar los notebooks (*.ipynb) de diversos ejemplos a realizar durante el curso.
@@ -19,3 +19,4 @@ Pinchen [aquí](https://www.youtube.com/watch?v=inN8seMm7UI&ab_channel=TensorFlo
 
 # Tutorial Introductorio Matlab
 
+[![TITLE](https://img.youtube.com/vi/zdlHYP3kCwg/0.jpg)](https://youtu.be/zdlHYP3kCwg)
