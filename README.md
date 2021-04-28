@@ -19,4 +19,3 @@ Pinchen [aquí](https://www.youtube.com/watch?v=inN8seMm7UI&ab_channel=TensorFlo
 
 # Tutorial Introductorio Matlab
 
-[![TITLE](https://img.youtube.com/vi/zdlHYP3kCwg/0.jpg)](https://youtu.be/zdlHYP3kCwg)
