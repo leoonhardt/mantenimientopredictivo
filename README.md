@@ -6,4 +6,4 @@ El presente repositorio contiene diversa información, videos y material complem
 
 #### Google Colab
 
-[Google Colab] (https://colab.research.google.com/notebooks/welcome.ipynb "Google Colab")
+
