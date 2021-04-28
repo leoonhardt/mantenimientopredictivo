@@ -16,3 +16,7 @@ La plataforma permite tanto escribir como ejecutar código, y solo se requiere d
 Dentro de este repositorio podrá encontrar los notebooks (*.ipynb) de diversos ejemplos a realizar durante el curso.
 
 Pinchen [aquí](https://www.youtube.com/watch?v=inN8seMm7UI&ab_channel=TensorFlow) para ver un video introductorio de la plataforma.
+
+# Tutorial Introductorio Matlab
+
+[![TITLE](https://img.youtube.com/vi/zdlHYP3kCwg/0.jpg)](https://youtu.be/zdlHYP3kCwg)
