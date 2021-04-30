@@ -342,7 +342,7 @@ def Find_wav_kurt(x,h,g,h1,h2,h3,nlevel,Sc,Fr,opt,Fs=1):
     print (c)
     kx = kurt(c,opt)
     
-    print "(kx", kx)
+    print ("kx", kx)
     
     sig = np.median(np.abs(c))/np.sqrt(np.pi/2.)
     print (sig)
