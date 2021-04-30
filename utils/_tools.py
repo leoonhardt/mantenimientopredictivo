@@ -97,7 +97,7 @@ def Fast_Kurtogram(x, nlevel, Fs=1, opt1=None, opt2=None):
         l1 = Level_w[index[0]+1]
         fi = (index[1])/3./2**(nlevel+1)
         fi += 2.**(-2-l1)
-        print fi, l1, Fs*fi
+        print (fi, l1, Fs*fi)
         plt.colorbar()
         plt.show()
     else:
@@ -140,22 +140,22 @@ def K_wpQ(x,h,g,h1,h2,h3,nlevel,opt,level=0):
             logging.error('nlevel must be smaller')
         level=nlevel
     x = x.ravel()
-    print "THIS"
-    print h, g
+    print("THIS")
+    print( h, g)
     KD, KQ = K_wpQ_local(x,h,g,h1,h2,h3,nlevel,opt,level)
     K = np.zeros((2*nlevel,3*2**nlevel))
-    print "******************************************************"
-    print KD.shape, KQ.shape, K.shape
+    print ("******************************************************")
+    print (KD.shape, KQ.shape, K.shape)
     #~ K = KD
     for i in range(nlevel-1):
-        print K[2*i,:].shape
+        print (K[2*i,:].shape)
         K[2*i,:] = KD[i+1,:]
-        print K[2*i+1,:].shape
+        print (K[2*i+1,:].shape)
         K[2*i+1,:] = KQ[i,:]
        
 
     K[2*nlevel-1,:] = KD[nlevel,:]
-    print "K Final Shape", K.shape
+    print ("K Final Shape", K.shape)
     return K
 
 def K_wpQ_local(x,h,g,h1,h2,h3,nlevel,opt,level):
@@ -184,24 +184,24 @@ def K_wpQ_local(x,h,g,h1,h2,h3,nlevel,opt,level):
         Kd3 = 0
     
     if level ==1:
-        print "level = 1"
+        print ("level = 1")
         K =np.array([K1*np.ones(3),K2*np.ones(3)]).flatten()
-        print 'K.shape',K.shape
+        print ('K.shape',K.shape)
         KQ = np.array([Ka1,Ka2,Ka3,Kd1,Kd2,Kd3])
-        print 'KQ.shape',KQ.shape
+        print ('KQ.shape',KQ.shape)
     if level > 1:
-        print "entering rec with level %i"%(level-1)
-        print "doing A"
+        print ("entering rec with level %i"%(level-1))
+        print ("doing A")
         Ka,KaQ = K_wpQ_local(a,h,g,h1,h2,h3,nlevel,opt,level-1)
-        print "doing D"
+        print ("doing D")
         Kd,KdQ = K_wpQ_local(d,h,g,h1,h2,h3,nlevel,opt,level-1)
-        print "out of rec level %i" % (level -1)
-        print Ka.shape, Kd.shape
+        print ("out of rec level %i" % (level -1))
+        print (Ka.shape, Kd.shape)
         K1 = K1*np.ones(np.max(Ka.shape))
         K2 = K2*np.ones(np.max(Kd.shape))
         K12 = np.append(K1,K2)
         Kad = np.hstack((Ka, Kd))
-        print ">", K12.shape, Kad.shape
+        print (">", K12.shape, Kad.shape)
         K = np.vstack((K12,Kad))
 
         Long = 2./6*np.max(KaQ.shape)
@@ -212,8 +212,8 @@ def K_wpQ_local(x,h,g,h1,h2,h3,nlevel,opt,level):
         Kd2 = Kd2*np.ones(Long)
         Kd3 = Kd3*np.ones(Long)
         tmp = np.hstack((KaQ,KdQ))
-        print "HEEEERE"
-        print tmp.shape
+        print ("HEEEERE")
+        print (tmp.shape)
         KQ = np.concatenate((Ka1,Ka2,Ka3,Kd1,Kd2,Kd3))
         KQ = np.vstack((KQ, tmp))
         #~ if tmp.shape[0] != KQ.shape[0]:
@@ -221,14 +221,14 @@ def K_wpQ_local(x,h,g,h1,h2,h3,nlevel,opt,level):
         #~ for i in range(tmp.shape[0]):
             #~ KQ = np.vstack((KQ,tmp[i]))
         
-        print "4", K.shape, KQ.shape
+        print ("4", K.shape, KQ.shape)
         
 
     
     if level == nlevel:
         K1 = kurt(x,opt)
         K = np.vstack((K1*np.ones(np.max(K.shape)), K))
-        print "K shape", K.shape
+        print ("K shape", K.shape)
 
         a1,a2,a3 = TBFB(x,h1,h2,h3)
         Ka1 = kurt(a1[len(h)-1:],opt)
@@ -238,14 +238,14 @@ def K_wpQ_local(x,h,g,h1,h2,h3,nlevel,opt,level):
         Ka1 = Ka1*np.ones(Long)
         Ka2 = Ka2*np.ones(Long)
         Ka3 = Ka3*np.ones(Long)
-        print KQ.shape
+        print( KQ.shape)
         tmp = np.array(KQ[0:-2])
-        print "level==nlevel"
+        print ("level==nlevel")
         
         KQ = np.concatenate((Ka1,Ka2,Ka3))
         KQ = np.vstack((KQ,tmp))
     
-    print "i'm leaving level=%i and K.shape="%level,K.shape, "and KQ.shape=",KQ.shape
+    print ("i'm leaving level=%i and K.shape="%level,K.shape, "and KQ.shape=",KQ.shape) 
     return K, KQ
 
 def kurt(x, opt):
@@ -339,15 +339,15 @@ def Find_wav_kurt(x,h,g,h1,h2,h3,nlevel,Sc,Fr,opt,Fs=1):
         bcoeff = i-i2*3
     acoeff = acoeff[::-1]
     c = K_wpQ_filt(x,h,g,h1,h2,h3,acoeff,bcoeff,temp_level)
-    print c
+    print (c)
     kx = kurt(c,opt)
     
     print "kx", kx
     
     sig = np.median(np.abs(c))/np.sqrt(np.pi/2.)
-    print sig
+    print (sig)
     threshold = sig*raylinv(np.array([.999,]),np.array([1,]))
-    print "threshold", threshold
+    print ("threshold", threshold)
     spec = int(raw_input('	Do you want to see the envelope spectrum (yes = 1 ; no = 0): '))
     
     fig = plt.figure()
@@ -361,7 +361,7 @@ def Find_wav_kurt(x,h,g,h1,h2,h3,nlevel,Sc,Fr,opt,Fs=1):
     #~ plt.title('Envlp of the filtr sgl, Bw=Fs/2^{'+(level+1)+'}, fc='+(Fs*fc)+'Hz, Kurt='+(np.round(np.abs(10*kx))/10)+', \alpha=.1%']
     plt.xlabel('time [s]')
     if spec == 1:
-        print nextpow2(len(c))
+        print (nextpow2(len(c)))
         nfft = int(nextpow2(len(c)))
         env = np.abs(c)**2
         S = np.abs(np.fft.fft(env.ravel()-np.mean(env)*np.hanning(len(env))/len(env),nfft))
@@ -381,7 +381,7 @@ def binary(i,k):
         logging.error('i must be such that i < 2^k !!')
     
     a = np.zeros(k+1)
-    print a.shape
+    print (a.shape)
     temp = i
     for l in np.arange(k,0,-1):
         a[k-l] = np.fix(temp/2**l)
@@ -447,12 +447,12 @@ def  K_wpQ_filt_local(x,h,g,h1,h2,h3,acoeff,bcoeff,level):
             elif bcoeff == 2:
                 c = c3[len(h3)-1:]
     if level > 1:
-        print "acoeff", acoeff[level-1]
+        print ("acoeff", acoeff[level-1])
         if acoeff[level-1] == 0:
             c = K_wpQ_filt_local(a,h,g,h1,h2,h3,acoeff,bcoeff,level-1)
         else:
             c = K_wpQ_filt_local(d,h,g,h1,h2,h3,acoeff,bcoeff,level-1)
-    print 'kurt', kurt(c,'kurt2')
+    print ('kurt', kurt(c,'kurt2'))
     return c
 
 def raylinv(p,b):
@@ -474,13 +474,13 @@ def raylinv(p,b):
 
     # Put in the correct values when P is 1.
     k = np.where(p == 1)[0]
-    print k
+    print( k)
     if len(k)!=0:
         tmp  = Inf
         x[k] = tmp(len(k))
 
     k = np.where(((b > 0) & (p > 0) & (p < 1)))[0]
-    print k
+    print (k)
     
     if len(k)!=0:
         pk = p[k]
