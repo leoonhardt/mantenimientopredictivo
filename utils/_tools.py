@@ -64,10 +64,10 @@ def Fast_Kurtogram(x, nlevel, Fs=1, opt1=None, opt2=None):
         fc = .4					# a short filter is just good enough!
         h = si.firwin(N+1,fc) * np.exp(2*1j*np.pi*np.arange(N+1)*0.125)
         n = np.arange(2,N+2)
-        print n
+        print(n)
         g = h[(1-n)%N]*(-1)**(1-n)
         N = np.fix((3./2.*N))
-        print N
+        print(N)
         h1 = si.firwin(N+1,2./3*fc)*np.exp(2j*np.pi*np.arange(N+1)*0.25/3.)
         #~ plt.plot(h1)
         #~ plt.show()
