@@ -1142,8 +1142,8 @@ def do_kurtogram_setup_and_run(opdict):
         for loc in locs:
             origin_time = loc['o_time']
             if opdict['verbose']:
-                print "******************************************************"
-                print logging.info(origin_time)
+                print( "******************************************************")
+                print (logging.info(origin_time))
 
             if origin_time > tdeb and origin_time < tfin:
                 info = kurto(origin_time, info, opdict)
