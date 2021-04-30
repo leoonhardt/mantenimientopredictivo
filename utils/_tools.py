@@ -42,13 +42,11 @@ Implements the kurtogram routine of Antoni (2005).
 """
 
 
-[docs]def nextpow2(n):
+def nextpow2(n):
     """
     Calculates next power of 2.
-
     :param n: a number
     :type n: integer
-
     :rtype: integer
     :returns: The next power of 2
     """
@@ -58,19 +56,15 @@ Implements the kurtogram routine of Antoni (2005).
     return 2**m_i
 
 
-[docs]def get_h_parameters(NFIR, fcut):
+def get_h_parameters(NFIR, fcut):
     """
     Calculates h-parameters used in Antoni (2005)
-
     :param NFIR: length of FIR filter
     :param fcut: fraction of Nyquist for filter
-
     :type NFIR: integer
     :type fcut: float
-
     :rtype: numpy array
     :returns: h-parameters: h, g, h1, h2, h3
-
     """
 
     h = si.firwin(NFIR+1, fcut) * np.exp(2*1j*np.pi*np.arange(NFIR+1) * 0.125)
@@ -84,10 +78,9 @@ Implements the kurtogram routine of Antoni (2005).
     return (h, g, h1, h2, h3)
 
 
-[docs]def plotKurtogram(Kwav, freq_w, nlevel, Level_w, Fs, fi, I):
+def plotKurtogram(Kwav, freq_w, nlevel, Level_w, Fs, fi, I):
     """
     Plots the kurtogram.
-
     :param Kwav: kurtogram
     :param freq_w: frequency vector
     :param nlevel: number of decomposition levels
@@ -95,7 +88,6 @@ Implements the kurtogram routine of Antoni (2005).
     :param Fs: sampling frequency of the signal
     :param fi: 
     :param I: level index
-
     :type Kwav: numpy array
     :type freq_w: numpy array
     :type nlevel: integer
@@ -122,26 +114,23 @@ Implements the kurtogram routine of Antoni (2005).
     plt.show()
 
 
-[docs]def getBandwidthAndFrequency(nlevel, Fs, level_w, freq_w, level_index,
+def getBandwidthAndFrequency(nlevel, Fs, level_w, freq_w, level_index,
                              freq_index):
     """
     Gets bandwidth bw and frequency parameters knowing the 
     level and the frequency indexes.
-
     :param nlevel: number of decomposition levels
     :param Fs: sampling frequency of the signal
     :param level_w: vector of decomposition levels
     :param freq_w: vector of frequencies
     :param level_index: index of the level 
     :param freq_index: index of the frequency
-
     :type nlevel: integer
     :type Fs: integer
     :type level_w: numpy array
     :type freq_w: numpy array
     :type level_index: integer
     :type freq_index: integer
-
     :returns: bw, fc, fi, l1
         * bw: bandwidth
         * fc: central frequency
@@ -159,13 +148,11 @@ Implements the kurtogram routine of Antoni (2005).
     return bw, fc, fi, l1
 
 
-[docs]def get_GridMax(grid):
+def get_GridMax(grid):
     """
     Gets maximum of a nD grid and its unraveled index
-
     :param grid: an nD-grid
     :type param: numpy array
-
     :returns:
     * M : grid maximum
     * index : index of maximum in unraveled grid
@@ -178,7 +165,7 @@ Implements the kurtogram routine of Antoni (2005).
     return M, index
 
 
-[docs]def Fast_Kurtogram(x, nlevel, verbose=False, Fs=1, NFIR=16, fcut=0.4,
+def Fast_Kurtogram(x, nlevel, verbose=False, Fs=1, NFIR=16, fcut=0.4,
                    opt1=1, opt2=1):
     """
     Computes the fast kurtogram Kwav of signal x up to level 'nlevel'
@@ -187,10 +174,8 @@ Implements the kurtogram routine of Antoni (2005).
     Also returns the vector of k-levels Level_w, the frequency vector 
     freq_w, the complex envelope of the signal c and the extreme 
     frequencies of the "best" bandpass f_lower and f_upper.
-
     J. Antoni : 02/2005
     Translation to Python: T. Lecocq 02/2012
-
     :param x: signal to analyse
     :param nlevel: number of decomposition levels
     :param verbose: If ``True`` outputs debugging information
@@ -209,13 +194,11 @@ Implements the kurtogram routine of Antoni (2005).
         transform (option 1 is faster and has more flexibility than option
         2 in the design of the analysis filter: a short filter in option 1
         gives virtually the same results as option 2)
-
     :type x: numpy array
     :type nlevel: integer
     :type Fs: integer
     :type NFIR: integer
     :type fcut: float
-
     :returns: Kwav, Level_w, freq_w, c, f_lower, f_upper
         * Kwav: kurtogram
         * Level_w: vector of levels
@@ -283,17 +266,15 @@ Implements the kurtogram routine of Antoni (2005).
     return Kwav, Level_w, freq_w, c, f_lower, f_upper
 
 
-[docs]def K_wpQ(x, h, g, h1, h2, h3, nlevel, verbose, opt, level=0):
+def K_wpQ(x, h, g, h1, h2, h3, nlevel, verbose, opt, level=0):
     """
     Calculates the kurtosis K (2-D matrix) of the complete quinte wavelet packet 
     transform w of signal x, up to nlevel, using the lowpass and highpass filters 
     h and g, respectively. The WP coefficients are sorted according to the frequency
     decomposition. This version handles both real and analytical filters, but
     does not yield WP coefficients suitable for signal synthesis.
-
     J. Antoni : 12/2004
     Translation to Python: T. Lecocq 02/2012
-
     :param x: signal
     :param h: lowpass filter
     :param g: higpass filter
@@ -306,7 +287,6 @@ Implements the kurtogram routine of Antoni (2005).
         * 'kurt1' = variance of the envelope magnitude
         * 'kurt2' = kurtosis of the complex envelope
     :param level: decomposition level for this call
-
     :type x: numpy array
     :type h: numpy array
     :type g: numpy array
@@ -315,9 +295,7 @@ Implements the kurtogram routine of Antoni (2005).
     :type h3: numpy array
     :type nlevel: integer
     :type opt: string
-
     :returns: kurtosis
-
     """
 
     L = np.floor(np.log2(len(x)))
@@ -338,7 +316,7 @@ Implements the kurtogram routine of Antoni (2005).
     return K
 
 
-[docs]def K_wpQ_local(x, h, g, h1, h2, h3, nlevel, verbose, opt, level):
+def K_wpQ_local(x, h, g, h1, h2, h3, nlevel, verbose, opt, level):
     """
     Is a recursive funtion. 
     Computes and returns the 2-D vector K, which contains the kurtosis value of the signal as 
@@ -346,7 +324,6 @@ Implements the kurtogram routine of Antoni (2005).
     band-passes.
     Also returns and computes the 2-D vector KQ which contains the 3 kurtosis values corresponding 
     to the signal filtered into 3 different band-passes.
-
     :param x: signal
     :param h: lowpass filter
     :param g: highpass filter
@@ -359,7 +336,6 @@ Implements the kurtogram routine of Antoni (2005).
         * 'kurt1' = variance of the envelope magnitude
         * 'kurt2' = kurtosis of the complex envelope
     :param level: decomposition level for this call
-
     :type x: numpy array
     :type h: numpy array
     :type g: numpy array
@@ -369,9 +345,7 @@ Implements the kurtogram routine of Antoni (2005).
     :type nlevel: integer
     :type opt: string
     :type level: integer
-
     :returns: K, KQ
-
     """
 
     a, d = DBFB(x, h, g)
@@ -446,18 +420,15 @@ Implements the kurtogram routine of Antoni (2005).
     return K, KQ
 
 
-[docs]def kurt(x, opt):
+def kurt(x, opt):
     """
     Calculates kurtosis of a signal according to the option chosen
-
     :param x: signal
     :param opt: ['kurt1' | 'kurt2']
         * 'kurt1' = variance of the envelope magnitude
         * 'kurt2' = kurtosis of the complex envelope
-
     :type x: numpy array
     :type opt: string
-
     :rtype: float
     :returns: Kurtosis
     """
@@ -500,24 +471,20 @@ Implements the kurtogram routine of Antoni (2005).
     return K
 
 
-[docs]def DBFB(x, h, g):
+def DBFB(x, h, g):
     """
     Double-band filter-bank.
     [a,d] = DBFB(x,h,g) computes the approximation
     coefficients vector a and detail coefficients vector d,
     obtained by passing signal x though a two-band analysis filter-bank.
-
     :param x: signal
     :param h: The decomposition low-pass filter and
     :param g: The decomposition high-pass filter.
-
     :type x: numpy array
     :type h: numpy array
     :type g: numpy array
-
     :rtype: numpy array
     :returns: a, d
-
     """
 
     # lowpass filter
@@ -533,24 +500,20 @@ Implements the kurtogram routine of Antoni (2005).
     return (a, d)
 
 
-[docs]def TBFB(x, h1, h2, h3):
+def TBFB(x, h1, h2, h3):
     """
     Triple-band filter-bank.
     [a1,a2,a3] = TBFB(x,h1,h2,h3)
-
     :param x: signal
     :param h1: filter parameter
     :param h2: filter parameter
     :param h3: filter parameter
-
     :type x: numpy array
     :type h1: numpy array
     :type h2: numpy array
     :type h3: numpy array
-
     :rtype: numpy array
     :returns: a1, a2, a3
-
     """
 
     # lowpass filter
@@ -571,13 +534,11 @@ Implements the kurtogram routine of Antoni (2005).
     return (a1, a2, a3)
 
 
-[docs]def Find_wav_kurt(x, h, g, h1, h2, h3, nlevel, Sc, Fr, Fs=1, verbose=False):
+def Find_wav_kurt(x, h, g, h1, h2, h3, nlevel, Sc, Fr, Fs=1, verbose=False):
     """
     TODO flesh out this doc-string
-
     J. Antoni : 12/2004
     Translation to Python: T. Lecocq 02/2012
-
     :param x: signal
     :param h: lowpass filter
     :param g: highpass filter
@@ -589,7 +550,6 @@ Implements the kurtogram routine of Antoni (2005).
     :param Fr: in the range [0, 0.5]
     :param Fs: Sampling frequency of signal x
     :param verbose: If ``True`` outputs debugging information
-
     :type x: numpy array
     :type h: numpy array
     :type g: numpy array
@@ -599,7 +559,6 @@ Implements the kurtogram routine of Antoni (2005).
     :type nlevel: integer
     :type Fr: float
     :type: Fs: integer
-
     :returns: c, s, threshold, Bw, fc
     """
     level = np.fix((Sc))+((Sc % 1) >= 0.5)*(np.log2(3)-1)
@@ -630,14 +589,11 @@ Implements the kurtogram routine of Antoni (2005).
     return c, s, threshold, Bw, fc
 
 
-[docs]def getFTSquaredEnvelope(c):
+def getFTSquaredEnvelope(c):
     """
     Calculates the Fourier transform of the squared envelope
-
     :param c: signal
-
     :returns S: FT of squared envelope
-
     """
 
     nfft = int(nextpow2(len(c)))
@@ -647,17 +603,15 @@ Implements the kurtogram routine of Antoni (2005).
     return S
 
 
-[docs]def plot_envelope(x, Fs, c, fc, level, spec=False):
+def plot_envelope(x, Fs, c, fc, level, spec=False):
     """
     Plots envelope (with or without its spectrum)
-
     :param x: signal
     :param Fs: sampling frequency of signal
     :param c: complex envelope of signal
     :param fc: central frequency of the bandpass in Hz
     :param level: index of the decomposition level
     :param spec: If ``True`` also plots the envelope spectrum
-
     :type x: numpy array
     :type Fs: float
     :type c: numpy array
@@ -696,14 +650,12 @@ Implements the kurtogram routine of Antoni (2005).
     plt.show()
 
 
-[docs]def binary(i, k):
+def binary(i, k):
     """
     Computes the coefficients of the binary expansion of i:
     i = a(1)*2^(k-1) + a(2)*2^(k-2) + ... + a(k)
-
     :param i: integer to expand
     :param k: nummber of coefficients
-
     :returns: coefficients a
     """
 
@@ -719,7 +671,7 @@ Implements the kurtogram routine of Antoni (2005).
     return a
 
 
-[docs]def K_wpQ_filt(x, h, g, h1, h2, h3, acoeff, bcoeff, level=0):
+def K_wpQ_filt(x, h, g, h1, h2, h3, acoeff, bcoeff, level=0):
     """
     Calculates the kurtosis K of the complete quinte wavelet packet transform w
     of signal x, up to nlevel, using the lowpass and highpass filters h and g,
@@ -727,10 +679,8 @@ Implements the kurtogram routine of Antoni (2005).
     decomposition.
     This version handles both real and analytical filters, but does not yield
     WP coefficients suitable for signal synthesis.
-
     J. Antoni : 12/2004
     Translation to Python: T. Lecocq 02/2012
-
     :param x: signal
     :param h: lowpass filter
     :param g: highpass filter
@@ -740,7 +690,6 @@ Implements the kurtogram routine of Antoni (2005).
     :param acoeff:
     :param acoeff:
     :param level:
-
     """
 
     nlevel = len(acoeff)
@@ -766,11 +715,10 @@ Implements the kurtogram routine of Antoni (2005).
     return c
 
 
-[docs]def K_wpQ_filt_local(x, h, g, h1, h2, h3, acoeff, bcoeff, level):
+def K_wpQ_filt_local(x, h, g, h1, h2, h3, acoeff, bcoeff, level):
     """
     Performs one analysis level into the analysis tree
     TODO : flesh out this doc-string
-
     :param x: signal
     :param h: lowpass filter
     :param g: higpass filter
@@ -780,7 +728,6 @@ Implements the kurtogram routine of Antoni (2005).
     :param acoeff:
     :param acoeff:
     :param level:
-
     """
 
     a, d = DBFB(x, h, g)
@@ -813,15 +760,13 @@ Implements the kurtogram routine of Antoni (2005).
     return c
 
 
-[docs]def raylinv(p, b):
+def raylinv(p, b):
     """
     Inverse of the Rayleigh cumulative distribution function (cdf).
     X = RAYLINV(P,B) returns the Rayleigh cumulative distribution function
     with parameter B at the probabilities in P.
-
     :param p: probabilities
     :param b:
-
     """
 
     # Initialize x to zero.
@@ -849,11 +794,10 @@ Implements the kurtogram routine of Antoni (2005).
     return x
 
 
-[docs]def plot_trace(fig, G, x, xfilt, kurtx, tr, info, f_lower, f_upper, snr,
+def plot_trace(fig, G, x, xfilt, kurtx, tr, info, f_lower, f_upper, snr,
                snr_ref, snr_kurt, kmax, kmax_ref, tstack):
     """
     Plots both signal and kurtosis for comparison. TODO : flesh out this doc-string.
-
     :param fig: figure
     :param G: location of the subplot in the figure
     :param x: initial signal
@@ -869,7 +813,6 @@ Implements the kurtogram routine of Antoni (2005).
     :param kmax: maximum value of tr
     :param kmax_ref: maximum value of kurtx
     :param tstack: origin time of the signal
-
     :type fig: matplotlib.pyplot.figure
     :type G: matplotlib.gridspec
     :type x: numpy array
@@ -918,22 +861,19 @@ Implements the kurtogram routine of Antoni (2005).
     fig.suptitle("%s - %s" % (sta, tstack))
 
 
-[docs]def write_file(info, tstart, tend, tr):
+def write_file(info, tstart, tend, tr):
     """
     Replaces the initial kurtosis by a new one (from 
     the signal filtered in the preferred band pass).
     Writes it in the dictionary info.
-
     :param info: dictionary of parameters
     :param tstart: start-time
     :param tend: end-time
     :param tr: trace to write
-
     :type info: dictionary
     :type tstart: utcdatetime
     :type tend: utcdatetime
     :type tr: numpy array
-
     :rtype: dictionary
     :returns: info
     """
@@ -955,22 +895,19 @@ Implements the kurtogram routine of Antoni (2005).
     return info
 
 
-[docs]def waveval(xall, tstart, tend, dt, tdeb):
+def waveval(xall, tstart, tend, dt, tdeb):
     """
     Returns the part of signal corresponding to a given event.
-
     :param xall: complete signal
     :param tstart: start time of the signal
     :param tend: end time of the signal
     :param dt: time sampling in seconds
     :param tdeb: start time of the whole data
-
     :type xall: numpy array
     :type tstart: utcdatetime
     :type tend: utcdatetime
     :type dt: float
     :type tdeb: utcdateime
-
     :rtype: numpy array
     :returns: val
     """
@@ -983,20 +920,17 @@ Implements the kurtogram routine of Antoni (2005).
     return val
 
 
-[docs]def kurto(origin_time, info, opdict):
+def kurto(origin_time, info, opdict):
     """
     Finds for each Waveloc event and for each station the best filtering 
     parameters for kurtosis computation.
     Writes them into the dictionary info.
-
     :param origin_time: origin time of the signal
     :param info: dictionary of parameters
     :param opdict: dictionary of the Waveloc parameters and options
-
     :type origin_time: utcdatetime
     :type info: dictionary
     :type opdict: dictionary
-
     :rtype: dictionary
     :returns: info
     """
@@ -1083,15 +1017,13 @@ Implements the kurtogram routine of Antoni (2005).
     return info
 
 
-[docs]def read_kurtogram_frequencies(filename):
+def read_kurtogram_frequencies(filename):
     """
     Reads the binary file with kurtogram frequencies.
     Plots the histograms of lower and upper frequencies 
     for each station.
     Aims at determining the best filtering parameters.
-
     :param filename: File to read
-
     :type filename: string
     """
     a = BinaryFile(filename)
@@ -1114,11 +1046,10 @@ Implements the kurtogram routine of Antoni (2005).
         plt.show()
 
 
-[docs]def do_kurtogram_setup_and_run(opdict):
+def do_kurtogram_setup_and_run(opdict):
     """
     Run the kurtogram analysis using the parameters contained in the
     WavelocOptions.opdict.
-
     :param opdict: Dictionary containing the waveloc parameters and options.
     """
 
