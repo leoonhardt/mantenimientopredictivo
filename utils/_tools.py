@@ -342,7 +342,7 @@ def Find_wav_kurt(x,h,g,h1,h2,h3,nlevel,Sc,Fr,opt,Fs=1):
     print (c)
     kx = kurt(c,opt)
     
-    print "kx", kx
+    print "(kx", kx)
     
     sig = np.median(np.abs(c))/np.sqrt(np.pi/2.)
     print (sig)
@@ -423,7 +423,7 @@ def K_wpQ_filt(x,h,g,h1,h2,h3,acoeff,bcoeff,level=0):
     return c
 
 def  K_wpQ_filt_local(x,h,g,h1,h2,h3,acoeff,bcoeff,level):
-    print level, x[:10]
+    print (level, x[:10])
     a,d = DBFB(x,h,g)         # perform one analysis level into the analysis tree
     N = len(a)                       
     d = d*np.power(-1.,np.arange(1,N+1))
@@ -485,7 +485,7 @@ def raylinv(p,b):
     if len(k)!=0:
         pk = p[k]
         bk = b[k]
-        print pk, bk
+        print (pk, bk)
         x[k] = np.sqrt((-2*bk ** 2) * np.log(1 - pk))
     return x
 
