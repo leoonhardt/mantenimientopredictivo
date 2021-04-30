@@ -159,7 +159,7 @@ def K_wpQ(x,h,g,h1,h2,h3,nlevel,opt,level=0):
     return K
 
 def K_wpQ_local(x,h,g,h1,h2,h3,nlevel,opt,level):
-    print "LEVEL", level
+    print ("LEVEL", level)
     a,d = DBFB(x,h,g)
     
     N = len(a)
