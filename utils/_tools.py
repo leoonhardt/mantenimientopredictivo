@@ -878,7 +878,7 @@ def write_file(info, tstart, tend, tr):
     :returns: info
     """
 
-    print "Writing a new kurtosis file..."
+    print( "Writing a new kurtosis file...")
     t_orig = info['tdeb']
     dt = info['dt']
     ind1 = int((tstart-t_orig)/dt)
@@ -1005,10 +1005,10 @@ def kurto(origin_time, info, opdict):
         info['filter'].append((0, 50))
 
     if verbose and snr > 3:
-        print "snr:", snr, " ; snr_ref:", snr_ref
-        print "snr new kurtosis:", snr_kurt, " ; snr kurtosis reference:",\
-            snr_kurt_ref
-        print "kurtosis max, kurt_ref :", kmax, kmax_ref
+        print ("snr:", snr, " ; snr_ref:", snr_ref)
+        print ("snr new kurtosis:", snr_kurt, " ; snr kurtosis reference:",\
+            snr_kurt_ref)
+        print ("kurtosis max, kurt_ref :", kmax, kmax_ref)
         plot_trace(fig, G, x, x_filt, kurtx, new_kurtx, info, f_lower,
                    f_upper, snr, snr_ref, snr_kurt, kmax, kmax_ref,
                    origin_time)
@@ -1030,8 +1030,8 @@ def read_kurtogram_frequencies(filename):
     freqs = a.read_binary_file()
 
     for staname in sorted(freqs):
-        print "%s %.1f %.1f" % (staname, np.mean(freqs[staname][:, 0]),
-                                np.mean(freqs[staname][:, 1]))
+        print ("%s %.1f %.1f" % (staname, np.mean(freqs[staname][:, 0]),
+                                np.mean(freqs[staname][:, 1])))
         fig = plt.figure()
         fig.set_facecolor('white')
         plt.hist([freqs[staname][:, 0], freqs[staname][:, 1]], 35,
