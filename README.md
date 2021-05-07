@@ -22,3 +22,9 @@ Pinchen [aquí](https://www.youtube.com/watch?v=inN8seMm7UI&ab_channel=TensorFlo
 En el siguiente tutorial se abarcan conceptos básicos del software, necesarios para la realización de las tareas del curso.
 
 [![TITLE](https://img.youtube.com/vi/zdlHYP3kCwg/0.jpg)](https://youtu.be/zdlHYP3kCwg)
+
+# Ejemplo 1: Envolvente
+
+Análisis de Envolvente en rodamientos.
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/leoonhardt/mantenimientopredictivo/blob/main/Ejemplo_1.ipynb)
