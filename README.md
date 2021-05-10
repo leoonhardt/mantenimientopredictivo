@@ -27,6 +27,8 @@ En el siguiente tutorial se abarcan conceptos básicos del software, necesarios 
 
 Análisis de Envolvente en rodamientos.
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/leoonhardt/mantenimientopredictivo/blob/main/Ejemplo_1.ipynb)
+
 <img src="https://raw.githubusercontent.com/leoonhardt/mantenimientopredictivo/master/datos/ejemplo1/envolvente.png" height="400">
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/leoonhardt/mantenimientopredictivo/blob/main/Ejemplo_1.ipynb)
+
