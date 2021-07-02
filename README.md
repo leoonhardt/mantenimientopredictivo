@@ -45,7 +45,7 @@ Degradación en rodamientos sometidos a cargas y velocidades desfavorables y ext
 
 <img src="https://raw.githubusercontent.com/leoonhardt/mantenimientopredictivo/master/datos/ejemplo2/rodamientos.png" height="400">
 
-# Extracción de parámetros frecuenciales
+# Ejemplo 3: Extracción de parámetros frecuenciales
 
 Transformada corta de Fourier, espectograma y Wavelets.
 
