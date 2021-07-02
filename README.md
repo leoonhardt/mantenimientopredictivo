@@ -31,4 +31,11 @@ Análisis de Envolvente en rodamientos.
 
 <img src="https://raw.githubusercontent.com/leoonhardt/mantenimientopredictivo/master/datos/ejemplo1/envolvente.png" height="400">
 
+# Tutorial Práctico 2
+
+Se abarcan de manera práctica los conceptos de autocorrelación, espectro de potencia, envolvente y convolución.
+
+[![TITLE](https://img.youtube.com/vi/Gw-_mPOy7QY/0.jpg)](https://youtu.be/Gw-_mPOy7QY)
+
+
 
