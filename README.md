@@ -45,4 +45,10 @@ Degradación en rodamientos sometidos a cargas y velocidades desfavorables y ext
 
 <img src="https://raw.githubusercontent.com/leoonhardt/mantenimientopredictivo/master/datos/ejemplo2/rodamientos.png" height="400">
 
+# Extracción de parámetros frecuenciales
 
+Transformada corta de Fourier, espectograma y Wavelets.
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/leoonhardt/mantenimientopredictivo/blob/main/Ejemplo_3.ipynb)
+
+<img src="https://raw.githubusercontent.com/leoonhardt/mantenimientopredictivo/master/datos/ejemplo3/sfft.PNG" height="400">
