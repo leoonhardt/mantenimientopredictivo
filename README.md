@@ -37,5 +37,12 @@ Se abarcan de manera práctica los conceptos de autocorrelación, espectro de po
 
 [![TITLE](https://img.youtube.com/vi/Gw-_mPOy7QY/0.jpg)](https://youtu.be/Gw-_mPOy7QY)
 
+# Ejemplo 2: Degradación y extracción de parñametros
+
+Degradación en rodamientos sometidos a cargas y velocidades desfavorables y extracción de parámetros en rodamientos. 
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/leoonhardt/mantenimientopredictivo/blob/main/Ejemplo_2.ipynb)
+
+<img src="https://raw.githubusercontent.com/leoonhardt/mantenimientopredictivo/master/datos/ejemplo2/rodamientos.png" height="400">
 
 
